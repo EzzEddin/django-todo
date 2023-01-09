@@ -1,16 +1,16 @@
 <h1>To Do</h1>
 <form method="POST" action="/">
     {% csrf_token %}
-    {{form.title}}
+    {{ form.text }}
     <input type="Submit" value="Add task">
 </form>
 {% for task in tasks %}
 <div>
     <ul>
         {% if task.is_done %}
-        <li><strike>{{task}}</strike></li>
+        <li><del>{{ task }}</del></li>
         {% else %}
-        <li>{{task}}</li>
+        <li>{{ task }}</li>
         {% endif %}
         <a href="{% url 'update_task' task.id %}">Update</a>
         <a href="{% url 'delete_task' task.id %}">Delete</a>
